@@ -40,6 +40,13 @@ namespace Labcsharp2OOP
 
     }
 
+    class TXT : Document
+    {
+
+      public int LineCount;
+
+    }
+
     static void Main(string[] args)
     {
     }
