@@ -76,6 +76,13 @@ namespace Labcsharp2OOP
 
         public int LineCount;
 
+        public override string getDocumentInfo()
+        {
+
+          return base.getDocumentInfo() + $"Line Count: {LineCount} \n";
+
+        }
+
       }
 
       class HTML : Document
