@@ -9,7 +9,8 @@ namespace Labcsharp2OOP
   internal class lab
   {
 
-    class Document {
+    class Document
+    {
 
       public string DocumentName;
       public string AuthorName;
@@ -17,45 +18,54 @@ namespace Labcsharp2OOP
       public string Theme;
       public string Path;
 
+      public virtual string getDocumentInfo()
+      {
+
+        return $"Document Name: {DocumentName} \n" +
+               $"Author Name: {AuthorName} \n" +
+               $"Key Words: {KeyWords} \n" +
+               $"Theme: {Theme} \n" +
+               $"Path: {Path} \n";
       }
 
-    class MSWord : Document
-    {
+      class MSWord : Document
+      {
 
-      public int NumberOfPages;
+        public int NumberOfPages;
 
-    }
+      }
 
-    class PDF : Document
-    {
+      class PDF : Document
+      {
 
-      public bool isPasswordProtected;
+        public bool isPasswordProtected;
 
-    }
+      }
 
-    class MSExcel : Document
-    {
+      class MSExcel : Document
+      {
 
-      public int UsedCellRange;
+        public int UsedCellRange;
 
-    }
+      }
 
-    class TXT : Document
-    {
+      class TXT : Document
+      {
 
-      public int LineCount;
+        public int LineCount;
 
-    }
+      }
 
-    class HTML : Document
-    {
+      class HTML : Document
+      {
 
-      public int NumberOfTags;
+        public int NumberOfTags;
 
-    }
+      }
 
-    static void Main(string[] args)
-    {
+      static void Main(string[] args)
+      {
+      }
     }
   }
 }
