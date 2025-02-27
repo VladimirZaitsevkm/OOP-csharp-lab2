@@ -1,24 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Labcsharp2OOP;
 
 namespace Labcsharp2OOP
 {
   public class Document
   {
-
     public string DocumentName;
     public string AuthorName;
     public string KeyWords;
-    public string Theme;
+    public string Theme;  
     public string Path;
 
-    public virtual string getDocumentInfo()
+    public virtual string GetDocumentInfo()
     {
-
       return $"Document Name: {DocumentName} \n" +
              $"Author Name: {AuthorName} \n" +
              $"Key Words: {KeyWords} \n" +
@@ -27,68 +21,177 @@ namespace Labcsharp2OOP
     }
   }
 
-  class MSWord : Document
+  class MsWord : Document
   {
-
     public int NumberOfPages;
 
-    public override string getDocumentInfo()
+    public override string GetDocumentInfo()
     {
-
-      return base.getDocumentInfo() + $"Pages: {NumberOfPages} \n";
-
+      return base.GetDocumentInfo() + $"Pages: {NumberOfPages} \n";
     }
   }
 
-  class PDF : Document
+  class Pdf : Document
   {
+    public bool IsPasswordProtected;
 
-    public bool isPasswordProtected;
-
-    public override string getDocumentInfo()
+    public override string GetDocumentInfo()
     {
-
-      return base.getDocumentInfo() + $"Is document protected by a password: {isPasswordProtected} \n";
-
+      return base.GetDocumentInfo() + $"Is document protected by a password: {IsPasswordProtected} \n";
     }
   }
 
-  class MSExcel : Document
+  class MsExcel : Document
   {
-
     public int UsedCellRange;
 
-    public override string getDocumentInfo()
+    public override string GetDocumentInfo()
     {
-
-      return base.getDocumentInfo() + $"Used Cell Range: {UsedCellRange} \n";
-
+      return base.GetDocumentInfo() + $"Used Cell Range: {UsedCellRange} \n";
     }
   }
 
-  class TXT : Document
+  class Txt : Document
   {
-
     public int LineCount;
 
-    public override string getDocumentInfo()
+    public override string GetDocumentInfo()
     {
-
-      return base.getDocumentInfo() + $"Line Count: {LineCount} \n";
-
+      return base.GetDocumentInfo() + $"Line Count: {LineCount} \n";
     }
   }
 
-  class HTML : Document
+  class Html : Document
   {
-
     public int NumberOfTags;
 
-    public override string getDocumentInfo()
+    public override string GetDocumentInfo()
     {
+      return base.GetDocumentInfo() + $"Number Of Tags: {NumberOfTags} \n";
+    }
+  }
 
-      return base.getDocumentInfo() + $"Number Of Tags: {NumberOfTags} \n";
+  class DocumentManager
+  {
+    private static DocumentManager _instance;
+    private List<Document> _documents = new List<Document>();
 
+    private DocumentManager() { }
+
+    public static DocumentManager Instance
+    {
+      get
+      {
+        if (_instance == null)
+        {
+          _instance = new DocumentManager();
+        }
+        return _instance;
+      }
+    }
+
+    public void ShowDocuments()
+    {
+      if (_documents.Count == 0)
+      {
+        Console.WriteLine("Нет документов.");
+        return;
+      }
+
+      foreach (var doc in _documents)
+      {
+        Console.WriteLine(doc.GetDocumentInfo());
+      }
+    }
+
+    public void Menu()
+    {
+      while (true)
+      {
+        Console.WriteLine("\nМеню:");
+        Console.WriteLine("1. Показать все документы");
+        Console.WriteLine("2. Добавить тестовые документы");
+        Console.WriteLine("3. Выйти");
+        Console.Write("Выберите действие: ");
+
+        string choice = Console.ReadLine();
+        switch (choice)
+        {
+          case "1":
+            ShowDocuments();
+            break;
+          case "2":
+            AddSampleDocuments();
+            Console.WriteLine("Тестовые документы добавлены!");
+            break;
+          case "3":
+            return;
+          default:
+            Console.WriteLine("Неверный ввод, попробуйте снова.");
+            break;
+        }
+      }
+    }
+
+    private void AddSampleDocuments()
+    {
+      _documents.Add(new MsWord
+      {
+        DocumentName = "Word File",
+        AuthorName = "Ivan",
+        KeyWords = "Text, Document",
+        Theme = "Work",
+        Path = "C:\\docs\\file.docx",
+        NumberOfPages = 10
+      });
+
+      _documents.Add(new Pdf
+      {
+        DocumentName = "PDF File",
+        AuthorName = "Anna",
+        KeyWords = "Report, Finance",
+        Theme = "Finance",
+        Path = "C:\\docs\\report.pdf",
+        IsPasswordProtected = true
+      });
+
+      _documents.Add(new MsExcel
+      {
+        DocumentName = "Excel File",
+        AuthorName = "Sergey",
+        KeyWords = "Data, Table",
+        Theme = "Data Analysis",
+        Path = "C:\\docs\\data.xlsx",
+        UsedCellRange = 100
+      });
+
+      _documents.Add(new Txt
+      {
+        DocumentName = "Text File",
+        AuthorName = "Olga",
+        KeyWords = "Notes, Memo",
+        Theme = "Personal",
+        Path = "C:\\docs\\notes.txt",
+        LineCount = 50
+      });
+
+      _documents.Add(new Html
+      {
+        DocumentName = "HTML File",
+        AuthorName = "Dmitry",
+        KeyWords = "Web, Page",
+        Theme = "Web Development",
+        Path = "C:\\docs\\page.html",
+        NumberOfTags = 15
+      });
+    }
+  }
+
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      DocumentManager.Instance.Menu();
     }
   }
 }
