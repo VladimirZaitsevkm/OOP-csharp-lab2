@@ -33,6 +33,13 @@ namespace Labcsharp2OOP
 
     }
 
+    class MSExcel : Document
+    {
+
+      public int UsedCellRange;
+
+    }
+
     static void Main(string[] args)
     {
     }
