@@ -3,99 +3,92 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Labcsharp2OOP;
 
 namespace Labcsharp2OOP
 {
-  internal class lab
+  public class Document
   {
 
-    class Document
+    public string DocumentName;
+    public string AuthorName;
+    public string KeyWords;
+    public string Theme;
+    public string Path;
+
+    public virtual string getDocumentInfo()
     {
 
-      public string DocumentName;
-      public string AuthorName;
-      public string KeyWords;
-      public string Theme;
-      public string Path;
-
-      public virtual string getDocumentInfo()
-      {
-
-        return $"Document Name: {DocumentName} \n" +
-               $"Author Name: {AuthorName} \n" +
-               $"Key Words: {KeyWords} \n" +
-               $"Theme: {Theme} \n" +
-               $"Path: {Path} \n";
-      }
+      return $"Document Name: {DocumentName} \n" +
+             $"Author Name: {AuthorName} \n" +
+             $"Key Words: {KeyWords} \n" +
+             $"Theme: {Theme} \n" +
+             $"Path: {Path} \n";
     }
+  }
 
-    class MSWord : Document
+  class MSWord : Document
+  {
+
+    public int NumberOfPages;
+
+    public override string getDocumentInfo()
     {
 
-      public int NumberOfPages;
+      return base.getDocumentInfo() + $"Pages: {NumberOfPages} \n";
 
-      public override string getDocumentInfo()
-      {
-
-        return base.getDocumentInfo() + $"Pages: {NumberOfPages} \n";
-
-      }
     }
+  }
 
-    class PDF : Document
+  class PDF : Document
+  {
+
+    public bool isPasswordProtected;
+
+    public override string getDocumentInfo()
     {
 
-      public bool isPasswordProtected;
+      return base.getDocumentInfo() + $"Is document protected by a password: {isPasswordProtected} \n";
 
-      public override string getDocumentInfo()
-      {
-
-        return base.getDocumentInfo() + $"Is document protected by a password: {isPasswordProtected} \n";
-
-      }
     }
+  }
 
-    class MSExcel : Document
+  class MSExcel : Document
+  {
+
+    public int UsedCellRange;
+
+    public override string getDocumentInfo()
     {
 
-      public int UsedCellRange;
+      return base.getDocumentInfo() + $"Used Cell Range: {UsedCellRange} \n";
 
-      public override string getDocumentInfo()
-      {
-
-        return base.getDocumentInfo() + $"Used Cell Range: {UsedCellRange} \n";
-
-      }
     }
+  }
 
-    class TXT : Document
+  class TXT : Document
+  {
+
+    public int LineCount;
+
+    public override string getDocumentInfo()
     {
 
-      public int LineCount;
+      return base.getDocumentInfo() + $"Line Count: {LineCount} \n";
 
-      public override string getDocumentInfo()
-      {
-
-        return base.getDocumentInfo() + $"Line Count: {LineCount} \n";
-
-      }
     }
+  }
 
-    class HTML : Document
+  class HTML : Document
+  {
+
+    public int NumberOfTags;
+
+    public override string getDocumentInfo()
     {
 
-      public int NumberOfTags;
+      return base.getDocumentInfo() + $"Number Of Tags: {NumberOfTags} \n";
 
-      public override string getDocumentInfo()
-      {
-
-        return base.getDocumentInfo() + $"Number Of Tags: {NumberOfTags} \n";
-
-      }
-    }
-
-    static void Main(string[] args)
-    {
     }
   }
 }
