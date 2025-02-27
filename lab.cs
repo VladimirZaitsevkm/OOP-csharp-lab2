@@ -4,10 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp3
+namespace Labcsharp2OOP
 {
   internal class lab
   {
+
+    class Document {
+
+      public string DocumentName;
+      public string AuthorName;
+      public string KeyWords;
+      public string Theme;
+      public string Path;
+
+      }
+
     static void Main(string[] args)
     {
     }
