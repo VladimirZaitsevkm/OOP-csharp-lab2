@@ -47,6 +47,13 @@ namespace Labcsharp2OOP
 
     }
 
+    class HTML : Document
+    {
+
+      public int NumberOfTags;
+
+    }
+
     static void Main(string[] args)
     {
     }
