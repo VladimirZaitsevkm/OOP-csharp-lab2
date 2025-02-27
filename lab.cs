@@ -49,6 +49,12 @@ namespace Labcsharp2OOP
 
         public bool isPasswordProtected;
 
+        public override string getDocumentInfo()
+        {
+
+          return base.getDocumentInfo() + $"Is document protected by a password: {isPasswordProtected} \n";
+
+        }
       }
 
       class MSExcel : Document
