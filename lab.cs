@@ -27,81 +27,75 @@ namespace Labcsharp2OOP
                $"Theme: {Theme} \n" +
                $"Path: {Path} \n";
       }
+    }
 
-      class MSWord : Document
+    class MSWord : Document
+    {
+
+      public int NumberOfPages;
+
+      public override string getDocumentInfo()
       {
 
-        public int NumberOfPages;
-
-        public override string getDocumentInfo()
-        {
-
-          return base.getDocumentInfo() + $"Pages: {NumberOfPages} \n";
-
-        }
-
-
+        return base.getDocumentInfo() + $"Pages: {NumberOfPages} \n";
 
       }
+    }
 
-      class PDF : Document
+    class PDF : Document
+    {
+
+      public bool isPasswordProtected;
+
+      public override string getDocumentInfo()
       {
 
-        public bool isPasswordProtected;
+        return base.getDocumentInfo() + $"Is document protected by a password: {isPasswordProtected} \n";
 
-        public override string getDocumentInfo()
-        {
-
-          return base.getDocumentInfo() + $"Is document protected by a password: {isPasswordProtected} \n";
-
-        }
       }
+    }
 
-      class MSExcel : Document
+    class MSExcel : Document
+    {
+
+      public int UsedCellRange;
+
+      public override string getDocumentInfo()
       {
 
-        public int UsedCellRange;
-
-        public override string getDocumentInfo()
-        {
-
-          return base.getDocumentInfo() + $"Used Cell Range: {UsedCellRange} \n";
-
-        }
+        return base.getDocumentInfo() + $"Used Cell Range: {UsedCellRange} \n";
 
       }
+    }
 
-      class TXT : Document
+    class TXT : Document
+    {
+
+      public int LineCount;
+
+      public override string getDocumentInfo()
       {
 
-        public int LineCount;
-
-        public override string getDocumentInfo()
-        {
-
-          return base.getDocumentInfo() + $"Line Count: {LineCount} \n";
-
-        }
+        return base.getDocumentInfo() + $"Line Count: {LineCount} \n";
 
       }
+    }
 
-      class HTML : Document
+    class HTML : Document
+    {
+
+      public int NumberOfTags;
+
+      public override string getDocumentInfo()
       {
 
-        public int NumberOfTags;
-
-        public override string getDocumentInfo()
-        {
-
-          return base.getDocumentInfo() + $"Number Of Tags: {NumberOfTags} \n";
-
-        }
+        return base.getDocumentInfo() + $"Number Of Tags: {NumberOfTags} \n";
 
       }
+    }
 
-      static void Main(string[] args)
-      {
-      }
+    static void Main(string[] args)
+    {
     }
   }
 }
