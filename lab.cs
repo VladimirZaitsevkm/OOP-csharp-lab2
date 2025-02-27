@@ -62,6 +62,13 @@ namespace Labcsharp2OOP
 
         public int UsedCellRange;
 
+        public override string getDocumentInfo()
+        {
+
+          return base.getDocumentInfo() + $"Used Cell Range: {UsedCellRange} \n";
+
+        }
+
       }
 
       class TXT : Document
