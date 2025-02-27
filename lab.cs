@@ -90,6 +90,13 @@ namespace Labcsharp2OOP
 
         public int NumberOfTags;
 
+        public override string getDocumentInfo()
+        {
+
+          return base.getDocumentInfo() + $"Number Of Tags: {NumberOfTags} \n";
+
+        }
+
       }
 
       static void Main(string[] args)
