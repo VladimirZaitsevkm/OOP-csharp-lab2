@@ -19,6 +19,13 @@ namespace Labcsharp2OOP
 
       }
 
+    class MSWord : Document
+    {
+
+      public int NumberOfPages;
+
+    }
+
     static void Main(string[] args)
     {
     }
