@@ -33,6 +33,15 @@ namespace Labcsharp2OOP
 
         public int NumberOfPages;
 
+        public override string getDocumentInfo()
+        {
+
+          return base.getDocumentInfo() + $"Pages: {NumberOfPages} \n";
+
+        }
+
+
+
       }
 
       class PDF : Document
