@@ -26,6 +26,13 @@ namespace Labcsharp2OOP
 
     }
 
+    class PDF : Document
+    {
+
+      public bool isPasswordProtected;
+
+    }
+
     static void Main(string[] args)
     {
     }
