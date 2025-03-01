@@ -7,7 +7,7 @@ namespace Labcsharp2OOP
   {
     public string DocumentName;
     public string AuthorName;
-    public string KeyWords;
+    public List<string> KeyWords = new List<string>();
     public string Theme;  
     public string Path;
 
@@ -15,7 +15,7 @@ namespace Labcsharp2OOP
     {
       return $"Document Name: {DocumentName} \n" +
              $"Author Name: {AuthorName} \n" +
-             $"Key Words: {KeyWords} \n" +
+             $"Key Words: {string.Join(", ", KeyWords)} \n" +
              $"Theme: {Theme} \n" +
              $"Path: {Path} \n";
     }
@@ -76,7 +76,6 @@ namespace Labcsharp2OOP
     private static DocumentManager _instance;
     private List<Document> _documents = new List<Document>();
 
-    private DocumentManager() { }
 
     public static DocumentManager Instance
     {
@@ -139,7 +138,7 @@ namespace Labcsharp2OOP
       {
         DocumentName = "Word File",
         AuthorName = "Ivan",
-        KeyWords = "Text, Document",
+        KeyWords = { "Text", "Document" },
         Theme = "Work",
         Path = "C:\\docs\\file.docx",
         NumberOfPages = 10
@@ -149,7 +148,7 @@ namespace Labcsharp2OOP
       {
         DocumentName = "PDF File",
         AuthorName = "Anna",
-        KeyWords = "Report, Finance",
+        KeyWords = { "Report", "Finance" },
         Theme = "Finance",
         Path = "C:\\docs\\report.pdf",
         IsPasswordProtected = true
@@ -159,7 +158,7 @@ namespace Labcsharp2OOP
       {
         DocumentName = "Excel File",
         AuthorName = "Sergey",
-        KeyWords = "Data, Table",
+        KeyWords = { "Data", "Table" },
         Theme = "Data Analysis",
         Path = "C:\\docs\\data.xlsx",
         UsedCellRange = 100
@@ -169,7 +168,7 @@ namespace Labcsharp2OOP
       {
         DocumentName = "Text File",
         AuthorName = "Olga",
-        KeyWords = "Notes, Memo",
+        KeyWords = { "Notes", "Memo" },
         Theme = "Personal",
         Path = "C:\\docs\\notes.txt",
         LineCount = 50
@@ -179,7 +178,7 @@ namespace Labcsharp2OOP
       {
         DocumentName = "HTML File",
         AuthorName = "Dmitry",
-        KeyWords = "Web, Page",
+        KeyWords = { "Web", "Page" },
         Theme = "Web Development",
         Path = "C:\\docs\\page.html",
         NumberOfTags = 15
